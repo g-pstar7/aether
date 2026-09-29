@@ -1,0 +1,39 @@
+mode: paper
+allow_live: false
+starting_cash: 100000
+symbols:
+  - BTC-USD
+  - ETH-USD
+pair_selection:
+  top_n: 2
+  min_hold_bars: 6
+  max_replacements: 1
+  rank_gap: 0.05
+  universe_extra:
+    - SOL-USD
+    - AVAX-USD
+  weights:
+    mom_fast: 0.25
+    mom_slow: 0.15
+    trend: 0.20
+    liquidity: 0.25
+    inv_vol: 0.15
+risk:
+  max_heat: 0.25
+  max_name_pct: 0.08
+  max_drawdown: 0.05
+  risk_mult: 1.0
+execution:
+  fee_bps: 5
+  slip_bps: 8
+audit:
+  path: logs/audit.jsonl
+data:
+  feed: synthetic
+  interval: 1h
+backtest:
+  days: 90
+live:
+  api_key_env: AETHER_EXCHANGE_API_KEY
+  api_secret_env: AETHER_EXCHANGE_API_SECRET
+  venue: stub
